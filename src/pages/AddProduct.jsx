@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api";
 
 function AddProduct() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+
+  const navigate = useNavigate();
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -13,37 +16,51 @@ function AddProduct() {
       await api.post("/", {
         name,
         price,
-        category
+        category,
       });
 
-      alert("Product Added");
+      alert("✅ Product Added Successfully");
+
+      navigate("/");
     } catch (error) {
       alert(error.response?.data?.message || error.message);
     }
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        placeholder="Product Name"
-        onChange={(e) => setName(e.target.value)}
-      />
+    <div className="container">
+      <h1>Add Product</h1>
 
-      <input
-        type="number"
-        placeholder="Price"
-        onChange={(e) => setPrice(e.target.value)}
-      />
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          placeholder="Enter Product Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
 
-      <input
-        type="text"
-        placeholder="Category"
-        onChange={(e) => setCategory(e.target.value)}
-      />
+        <input
+          type="number"
+          placeholder="Enter Price"
+          value={price}
+          onChange={(e) => setPrice(e.target.value)}
+          required
+        />
 
-      <button type="submit">Add</button>
-    </form>
+        <input
+          type="text"
+          placeholder="Enter Category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+        />
+
+        <button type="submit" className="add-btn">
+          Add Product
+        </button>
+      </form>
+    </div>
   );
 }
 
