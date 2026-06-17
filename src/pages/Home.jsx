@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import api from "../api";
 
 function Home() {
   const [products, setProducts] = useState([]);
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchProducts();
   }, []);
@@ -32,10 +32,18 @@ function Home() {
       console.log(error);
     }
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
 
   return (
     <div className="container">
       <h1>📋 Products List</h1>
+
+      <button onClick={handleLogout}>
+        Logout
+      </button>
 
       <Link to="/add">
         <button className="add-btn">
