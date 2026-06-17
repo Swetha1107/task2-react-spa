@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import AddProduct from "./pages/AddProduct";
 import EditProduct from "./pages/EditProduct";
+import Login from "./pages/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -9,17 +11,34 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Home />}
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+/>
+
+        <Route
+          path="/login"
+          element={<Login />}
         />
 
         <Route
           path="/add"
-          element={<AddProduct />}
+          element={
+            <ProtectedRoute>
+              <AddProduct />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/edit/:id"
-          element={<EditProduct />}
+          element={
+            <ProtectedRoute>
+              <EditProduct />
+            </ProtectedRoute>
+          }
         />
       </Routes>
     </BrowserRouter>
