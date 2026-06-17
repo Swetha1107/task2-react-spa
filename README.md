@@ -1,57 +1,46 @@
 # Product Management System (MERN Stack)
 
-## 📌 Description
+## Description
 This is a Product Management System built using MERN Stack Internship Task 2.
 
-Frontend is built using React.js and it connects to backend REST API built using Node.js, Express.js, and MongoDB.
+The frontend is built using React.js and it connects to a backend REST API built using Node.js, Express.js, and MongoDB.
 
----
+## Running URLs
 
-## 🚀 Running URLs
-
-### Frontend (React)
+Frontend (React)
 http://localhost:5173
 
-### Backend (API Server)
+Backend (API Server)
 http://localhost:5000
 
----
-
-## ✨ Features
+## Features
 - Add Product
 - View Products
 - Update Product
 - Delete Product
 
----
+## Technologies Used
 
-## 🛠️ Technologies Used
-
-### Frontend
+Frontend
 - React.js
 - Axios
 - React Router DOM
 
-### Backend
+Backend
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
 
----
+## API Endpoints
 
-## 🔗 API Endpoints
+- GET /api/products - Get all products
+- POST /api/products - Add product
+- PUT /api/products/:id - Update product
+- DELETE /api/products/:id - Delete product
 
-- GET /api/products → Get all products
-- POST /api/products → Add product
-- PUT /api/products/:id → Update product
-- DELETE /api/products/:id → Delete product
+## How to Run
 
----
-
-## ⚙️ How to Run
-
-### Backend
-```bash
+Backend
 npm install
 npm start
